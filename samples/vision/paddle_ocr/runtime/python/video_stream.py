@@ -201,9 +201,10 @@ class OCRVideoRunner:
         return result
 
     def overlay_text(self, frame: np.ndarray, result: OCRFrameResult) -> np.ndarray:
-        """Draw recognized text on the frame, positioned above each box.
+        """Draw recognized Chinese text on the frame, positioned above each box.
 
-        Uses OpenCV's ``putText`` for fast rendering (no PIL dependency).
+        Uses PIL/Pillow with a TrueType font for correct CJK rendering
+        (OpenCV's ``putText`` cannot render Chinese characters).
 
         Args:
             frame: BGR frame to draw on.
@@ -212,7 +213,16 @@ class OCRVideoRunner:
         Returns:
             The annotated frame (modified in-place).
         """
-        overlay = frame.copy()
+        from PIL import Image, ImageDraw, ImageFont
+
+        font_size = 24
+        font = ImageFont.truetype(self.font_path, font_size)
+
+        # Convert BGR frame to RGB PIL image for drawing
+        img_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        img_pil = Image.fromarray(img_rgb)
+        draw = ImageDraw.Draw(img_pil)
+
         for text, box in zip(result.texts, result.boxes):
             if not text:
                 continue
@@ -222,25 +232,24 @@ class OCRVideoRunner:
             cx = int(np.mean(xs))
             y_top = int(np.min(ys)) - 8
 
-            # Draw text with background rectangle for readability
-            (tw, th), _ = cv2.getTextSize(text, cv2.FONT_HERSHEY_SIMPLEX,
-                                          0.6, 2)
+            # Measure text size using PIL
+            bbox = draw.textbbox((0, 0), text, font=font)
+            tw = bbox[2] - bbox[0]
+            th = bbox[3] - bbox[1]
+
             text_x = cx - tw // 2
             text_y = y_top if y_top > th else y_top + th + 4
 
-            # Background rectangle
-            cv2.rectangle(
-                overlay,
-                (text_x - 2, text_y - th - 2),
-                (text_x + tw + 2, text_y + 4),
-                (255, 255, 255),
-                -1,  # filled
+            # Draw white background rectangle
+            draw.rectangle(
+                [text_x - 2, text_y - th - 2, text_x + tw + 2, text_y + 4],
+                fill=(255, 255, 255),
             )
-            # Text
-            cv2.putText(overlay, text, (text_x, text_y),
-                        cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 0, 255), 2)
+            # Draw red Chinese text
+            draw.text((text_x, text_y), text, font=font, fill=(255, 0, 0))
 
-        return overlay
+        # Convert back to BGR NumPy array
+        return cv2.cvtColor(np.array(img_pil), cv2.COLOR_RGB2BGR)
 
     def annotate_result(self, frame: np.ndarray, result: OCRFrameResult) -> np.ndarray:
         """Combine box drawing and text overlay on the frame.
