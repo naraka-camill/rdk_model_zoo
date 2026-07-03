@@ -252,17 +252,16 @@ class OCRVideoRunner:
         return cv2.cvtColor(np.array(img_pil), cv2.COLOR_RGB2BGR)
 
     def annotate_result(self, frame: np.ndarray, result: OCRFrameResult) -> np.ndarray:
-        """Combine box drawing and text overlay on the frame.
+        """Return the frame with bounding boxes only (no text overlay).
 
         Args:
-            frame: Original BGR frame.
-            result: OCR results.
+            frame: Original BGR frame (unused, kept for API compatibility).
+            result: OCR results containing ``frame_with_boxes``.
 
         Returns:
-            Fully annotated frame.
+            Frame with polygon bounding boxes drawn on it.
         """
-        annotated = self.overlay_text(result.frame_with_boxes, result)
-        return annotated
+        return result.frame_with_boxes
 
 
 # ---------------------------------------------------------------------------
