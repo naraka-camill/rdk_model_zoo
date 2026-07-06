@@ -1,3 +1,13 @@
+项目基于https://github.com/D-Robotics/rdk_model_zoo/tree/rdk_s 分支`rdk_s`
+
+新增内容为：  
+- 实例分割视频流处理  
+- 姿态估计视频流处理  
+- OCR视频流处理    
+- 实时语音识别  
+
+
+
 <div align="center">
   <img src="docs/assets/model_zoo_logo.jpg" width="60%" alt="RDK Model Zoo Logo"/>
 </div>
