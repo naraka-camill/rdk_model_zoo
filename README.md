@@ -3,15 +3,15 @@
 </div>
 
 <div align="center">
-  <h1 align="center">RDK Model Zoo — RDK S Series</h1>
+  <h1 align="center">RDK Model Zoo — RDK S 系列</h1>
   <p align="center">
-    <b>Out-of-the-Box AI Model Deployment Pipelines and Full-Link Conversion Tutorials Based on D-Robotics BPU</b>
+    <b>基于 D-Robotics BPU 的开箱即用 AI 模型部署流水线与全链路转换教程</b>
   </p>
 </div>
 
 <div align="center">
 
-**English** | [简体中文](./README_cn.md)
+[English](./README.md) | **简体中文**
 
 <p align="center">
   <a href="https://github.com/D-Robotics/rdk_model_zoo/stargazers"><img src="https://img.shields.io/github/stars/D-Robotics/rdk_model_zoo?style=flat-square&logo=github&color=blue" alt="Stars"></a>
@@ -23,167 +23,167 @@
 
 </div>
 
-## Introduction
+## 简介
 
-> **Mission**: Dedicated to providing D-Robotics developers with extreme performance, out-of-the-box, and full-scenario AI deployment validation experiences.
+> **使命**：致力于为 D-Robotics 开发者提供极致性能、开箱即用、全场景覆盖的 AI 部署验证体验。
 
-This repository is the official collection of BPU model examples and tools (Model Zoo) provided by D-Robotics. It is oriented towards AI model deployment and application development on BPU (Brain Processing Unit), helping developers to **quickly get started with BPU** and **fast-track model inference workflows**.
+本仓库是 D-Robotics（地瓜机器人）官方提供的 BPU 模型示例与工具集合（Model Zoo），面向运行在 BPU（Brain Processing Unit）上的 AI 模型部署与应用开发，帮助开发者**快速上手 BPU**、**快速跑通模型推理流程**。
 
-The repository includes BPU-ready models across multiple AI domains and provides complete reference implementations from **Original Model (PyTorch/ONNX) → Fixed-point Quantization → Inference Execution → Result Parsing → Example Validation**, helping users understand and utilize BPU capabilities at minimal cost.
+仓库中收录了覆盖多个 AI 领域的 BPU 可运行模型，并提供从**原始模型（PyTorch/ONNX）→ 定点量化 → 推理运行 → 结果解析 → 示例验证**的完整参考实现，帮助用户以最小成本理解并使用 BPU 能力。
 
-### Core Value
+### 核心价值
 
-- 🚀 **Quick BPU Adoption**: Provides out-of-the-box inference pipelines to help users complete BPU inference validation and performance evaluation in the shortest time.
-- 🧩 **Complete End-to-End Examples**: Covers the entire process from algorithm export and fixed-point quantization to efficient on-board execution (`.hbm`). Includes model loading, preprocessing, BPU inference execution, post-processing, and result visualization.
-- 📐 **Standardized Design & Documentation**: Provides unified directory structures and sample code specifications, supporting Python (`hbm_runtime`) and C/C++ interfaces for easy understanding, secondary development, and reduced integration/maintenance costs.
-- 🌐 **Full Scenario Coverage**: Covers classification, detection, segmentation, pose estimation, depth estimation, OCR, speech, and multi-modal models.
+- 🚀 **快速把 BPU 用起来**：提供开箱即用的推理流水线，帮助用户在最短时间内完成 BPU 推理验证与性能评测。
+- 🧩 **完整端到端示例**：覆盖算法导出、定点量化到高效上板运行（`.hbm`）的全流程，包含模型加载、前处理、BPU 推理执行、后处理与结果可视化。
+- 📐 **规范化设计与完整接口文档**：提供统一的目录结构与示例代码规范，支持 Python（`hbm_runtime`）与 C/C++ 双语言接口，便于理解、二次开发，降低集成与维护成本。
+- 🌐 **全场景覆盖**：覆盖分类、检测、分割、姿态估计、深度估计、OCR、语音及多模态模型。
 
-### Hardware & System Support
+### 硬件与分支说明
 
-This repository uses hardware-specific branches to keep maintained samples, legacy demos, and board-specific documents clearly separated. The current `rdk_s` branch is the primary delivery branch for RDK S series boards (S100 / S100P / S600).
+本仓库使用硬件专属分支，清晰区分维护中的 sample、历史 demo 和板端专属文档。当前 `rdk_s` 分支是 RDK S 系列板卡（S100 / S100P / S600）的主要交付分支。
 
-| Target Hardware | Branch | Description |
+| 目标硬件 | 分支 | 说明 |
 | :--- | :--- | :--- |
-| RDK S series | [`rdk_s`](https://github.com/D-Robotics/rdk_model_zoo/tree/rdk_s) | **Current branch.** Primary delivery branch for RDK S100, S100P, and S600. |
-| RDK X5 | [`rdk_x5`](https://github.com/D-Robotics/rdk_model_zoo/tree/rdk_x5) | Primary delivery branch for RDK X5. |
-| RDK X3 | [`rdk_x3`](https://github.com/D-Robotics/rdk_model_zoo/tree/rdk_x3) | Branch for RDK X3 devices. |
-| RDK S legacy demos | [RDK Model Zoo S](https://github.com/D-Robotics/rdk_model_zoo_s) | Historical archived demos for RDK S series boards. |
+| RDK S 系列 | [`rdk_s`](https://github.com/D-Robotics/rdk_model_zoo/tree/rdk_s) | **当前分支。** RDK S100、S100P、S600 的主要交付分支。 |
+| RDK X5 | [`rdk_x5`](https://github.com/D-Robotics/rdk_model_zoo/tree/rdk_x5) | RDK X5 的主要交付分支。 |
+| RDK X3 | [`rdk_x3`](https://github.com/D-Robotics/rdk_model_zoo/tree/rdk_x3) | RDK X3 设备专用分支。 |
+| RDK S 历史 demo | [RDK Model Zoo S](https://github.com/D-Robotics/rdk_model_zoo_s) | RDK S 系列历史归档 demo 仓库。 |
 
 ---
 
-## Directory Structure
+## 目录结构
 
 <details>
-<summary><b>Click to expand project directory architecture</b></summary>
+<summary><b>点击展开项目目录架构</b></summary>
 
 <br>
 
 ```bash
-rdk_model_zoo/                       # rdk_s branch
+rdk_model_zoo/                       # rdk_s 分支
 |-- samples/
 |   |-- vision/
-|   |   |-- ultralytics_yolo/        # Detection / Segmentation / Pose / Classification
-|   |   |-- ultralytics_yolo26/      # Detection / Segmentation / Pose / OBB / Classification
-|   |   |-- yolov5/                  # Object detection
-|   |   |-- yolo11/                  # Object detection
-|   |   |-- yolo11_seg/              # Instance segmentation
-|   |   |-- yolo11_pose/             # Pose estimation
-|   |   |-- yoloe11_seg/             # Instance segmentation (prompt-free)
-|   |   |-- yolov13_imoonlab/        # Object detection
-|   |   |-- bytetrack/               # Multi-object tracking
-|   |   |-- resnet18/                # Image classification
-|   |   |-- resnet50/                # Image classification
-|   |   |-- resnet152/               # Image classification
-|   |   |-- mobilenetv1/             # Image classification
-|   |   |-- mobilenetv2/             # Image classification
-|   |   |-- mobilenetv3/             # Image classification
-|   |   |-- mobilenetv4/             # Image classification
-|   |   |-- efficientnet/            # Image classification
-|   |   |-- vit/                     # Image classification
-|   |   |-- 3dresnet/                # Video action classification
-|   |   |-- unetmobilenet/           # Semantic segmentation
-|   |   |-- depth_anything_v2/       # Monocular depth estimation
-|   |   |-- siglip/                  # Vision encoder for VLM / VLA
-|   |   |-- pointnet/                # Point cloud part segmentation
-|   |   |-- lanenet/                 # Lane detection
-|   |   `-- paddle_ocr/             # OCR text detection and recognition
+|   |   |-- ultralytics_yolo/        # 检测 / 分割 / 姿态 / 分类
+|   |   |-- ultralytics_yolo26/      # 检测 / 分割 / 姿态 / OBB / 分类
+|   |   |-- yolov5/                  # 目标检测
+|   |   |-- yolo11/                  # 目标检测
+|   |   |-- yolo11_seg/              # 实例分割
+|   |   |-- yolo11_pose/             # 姿态估计
+|   |   |-- yoloe11_seg/             # 实例分割（无提示词）
+|   |   |-- yolov13_imoonlab/        # 目标检测
+|   |   |-- bytetrack/               # 多目标追踪
+|   |   |-- resnet18/                # 图像分类
+|   |   |-- resnet50/                # 图像分类
+|   |   |-- resnet152/               # 图像分类
+|   |   |-- mobilenetv1/             # 图像分类
+|   |   |-- mobilenetv2/             # 图像分类
+|   |   |-- mobilenetv3/             # 图像分类
+|   |   |-- mobilenetv4/             # 图像分类
+|   |   |-- efficientnet/            # 图像分类
+|   |   |-- vit/                     # 图像分类
+|   |   |-- 3dresnet/                # 视频动作分类
+|   |   |-- unetmobilenet/           # 语义分割
+|   |   |-- depth_anything_v2/       # 单目深度估计
+|   |   |-- siglip/                  # VLM / VLA 视觉编码器
+|   |   |-- pointnet/                # 点云零件分割
+|   |   |-- lanenet/                 # 车道线检测
+|   |   `-- paddle_ocr/             # OCR 文字检测与识别
 |   |-- speech/
-|   |   |-- asr/                     # Automatic speech recognition
-|   |   `-- kws/                    # Keyword spotting
+|   |   |-- asr/                     # 自动语音识别
+|   |   `-- kws/                    # 关键词唤醒
 |   `-- vla/
-|       `-- act/                    # Action Chunking Transformer (robot policy)
-|-- docs/                            # Project guidelines and reference documentation
-|-- datasets/                        # Sample datasets and download scripts
-|-- tros/                            # TROS integration guides and examples
-|-- utils/                           # Shared Python utilities
+|       `-- act/                    # Action Chunking Transformer（机器人策略）
+|-- docs/                            # 项目规范与参考文档
+|-- datasets/                        # 示例数据集与下载脚本
+|-- tros/                            # TROS 集成指南与示例
+|-- utils/                           # 共享 Python 工具库
 ```
 
 </details>
 
 ---
 
-## Quick Start
+## 快速开始
 
-1. **Check system version**: Ensure the target board is running a supported RDK OS.
-2. **Connect hardware**: Ensure your RDK S board is powered and network-connected. SSH or VSCode Remote SSH is recommended.
-3. **Read the model README first**: Always open the target directory `README.md` before running commands.
-4. **Run a sample** (example: YOLOv5 on RDK S100):
+1. **检查系统版本**：确认目标板卡运行支持的 RDK OS 版本。
+2. **连接硬件**：确保 RDK S 板卡已上电并连接网络，推荐使用 SSH 或 VSCode Remote SSH。
+3. **先阅读模型 README**：运行前务必打开目标目录的 `README.md`。
+4. **运行示例**（以 YOLOv5 在 RDK S100 为例）：
 
 ```bash
 cd samples/vision/yolov5/runtime/python
 bash run.sh
 ```
 
-The `run.sh` script automatically downloads the model, installs dependencies, and runs inference. Output images are saved in the current directory.
+`run.sh` 会自动下载模型、安装依赖并执行推理，输出图片保存在当前目录。
 
 ---
 
-## Model List
+## 模型列表
 
-| Category | Model Name | Model Path | Supported Platforms | Details |
+| 类别 | 模型名称 | 模型路径 | 支持平台 | 详情 |
 | :--- | :--- | :--- | :--- | :---: |
-| Vision Multi-task | Ultralytics YOLO (YOLOv5u / YOLOv8 / YOLOv9 / YOLOv10 / YOLO11 / YOLO12) | `samples/vision/ultralytics_yolo` | S100 / S100P / S600 | [Details](./samples/vision/ultralytics_yolo) |
-| Vision Multi-task | YOLO26 | `samples/vision/ultralytics_yolo26` | S100 / S100P / S600 | [Details](./samples/vision/ultralytics_yolo26) |
-| Object Detection | YOLOv5x | `samples/vision/yolov5` | S100 / S600 | [Details](./samples/vision/yolov5) |
-| Object Detection | YOLO11 | `samples/vision/yolo11` | S100 / S600 | [Details](./samples/vision/yolo11) |
-| Object Detection | YOLOv13 (iMoonLab) | `samples/vision/yolov13_imoonlab` | S100 | [Details](./samples/vision/yolov13_imoonlab) |
-| Multi-Object Tracking | ByteTrack | `samples/vision/bytetrack` | S100 / S100P / S600 | [Details](./samples/vision/bytetrack) |
-| Instance Segmentation | YOLO11-Seg | `samples/vision/yolo11_seg` | S100 / S600 | [Details](./samples/vision/yolo11_seg) |
-| Instance Segmentation | YOLOe11-Seg (Prompt-Free) | `samples/vision/yoloe11_seg` | S100 | [Details](./samples/vision/yoloe11_seg) |
-| Pose Estimation | YOLO11-Pose | `samples/vision/yolo11_pose` | S100 / S600 | [Details](./samples/vision/yolo11_pose) |
-| Image Classification | ResNet18 | `samples/vision/resnet18` | S100 / S600 | [Details](./samples/vision/resnet18) |
-| Image Classification | ResNet50 | `samples/vision/resnet50` | S100 / S600 | [Details](./samples/vision/resnet50) |
-| Image Classification | ResNet152 | `samples/vision/resnet152` | S100 / S600 | [Details](./samples/vision/resnet152) |
-| Image Classification | MobileNetV1 | `samples/vision/mobilenetv1` | S100 | [Details](./samples/vision/mobilenetv1) |
-| Image Classification | MobileNetV2 | `samples/vision/mobilenetv2` | S100 / S600 | [Details](./samples/vision/mobilenetv2) |
-| Image Classification | MobileNetV3 | `samples/vision/mobilenetv3` | S100 | [Details](./samples/vision/mobilenetv3) |
-| Image Classification | MobileNetV4 | `samples/vision/mobilenetv4` | S100 | [Details](./samples/vision/mobilenetv4) |
-| Image Classification | EfficientNet-Lite | `samples/vision/efficientnet` | S100 | [Details](./samples/vision/efficientnet) |
-| Image Classification | ViT | `samples/vision/vit` | S100 | [Details](./samples/vision/vit) |
-| Image Classification | 3D ResNet (Video Action) | `samples/vision/3dresnet` | S100 | [Details](./samples/vision/3dresnet) |
-| Semantic Segmentation | UnetMobileNet | `samples/vision/unetmobilenet` | S100 / S600 | [Details](./samples/vision/unetmobilenet) |
-| Monocular Depth Estimation | Depth Anything V2 | `samples/vision/depth_anything_v2` | S100 | [Details](./samples/vision/depth_anything_v2) |
-| Vision Encoder | SigLIP | `samples/vision/siglip` | S100 / S100P | [Details](./samples/vision/siglip) |
-| Point Cloud Segmentation | PointNet | `samples/vision/pointnet` | S100 | [Details](./samples/vision/pointnet) |
-| Lane Detection | LaneNet | `samples/vision/lanenet` | S100 | [Details](./samples/vision/lanenet) |
-| Text Recognition | PaddleOCR | `samples/vision/paddle_ocr` | S100 | [Details](./samples/vision/paddle_ocr) |
-| Speech Recognition | ASR (Wav2Vec2) | `samples/speech/asr` | S100 / S600 | [Details](./samples/speech/asr) |
-| Keyword Spotting | KWS (MDTC) | `samples/speech/kws` | S100 | [Details](./samples/speech/kws) |
-| Embodied AI / Robot Policy | ACT (Action Chunking Transformer) | `samples/vla/act` | S100 / S600 | [Details](https://github.com/D-Robotics/rdk_LeRobot_tools) |
+| 视觉多任务 | Ultralytics YOLO（YOLOv5u / YOLOv8 / YOLOv9 / YOLOv10 / YOLO11 / YOLO12） | `samples/vision/ultralytics_yolo` | S100 / S100P / S600 | [详情](./samples/vision/ultralytics_yolo) |
+| 视觉多任务 | YOLO26 | `samples/vision/ultralytics_yolo26` | S100 / S100P / S600 | [详情](./samples/vision/ultralytics_yolo26) |
+| 目标检测 | YOLOv5x | `samples/vision/yolov5` | S100 / S600 | [详情](./samples/vision/yolov5) |
+| 目标检测 | YOLO11 | `samples/vision/yolo11` | S100 / S600 | [详情](./samples/vision/yolo11) |
+| 目标检测 | YOLOv13（iMoonLab） | `samples/vision/yolov13_imoonlab` | S100 | [详情](./samples/vision/yolov13_imoonlab) |
+| 多目标追踪 | ByteTrack | `samples/vision/bytetrack` | S100 / S100P / S600 | [详情](./samples/vision/bytetrack) |
+| 实例分割 | YOLO11-Seg | `samples/vision/yolo11_seg` | S100 / S600 | [详情](./samples/vision/yolo11_seg) |
+| 实例分割 | YOLOe11-Seg（无提示词） | `samples/vision/yoloe11_seg` | S100 | [详情](./samples/vision/yoloe11_seg) |
+| 姿态估计 | YOLO11-Pose | `samples/vision/yolo11_pose` | S100 / S600 | [详情](./samples/vision/yolo11_pose) |
+| 图像分类 | ResNet18 | `samples/vision/resnet18` | S100 / S600 | [详情](./samples/vision/resnet18) |
+| 图像分类 | ResNet50 | `samples/vision/resnet50` | S100 / S600 | [详情](./samples/vision/resnet50) |
+| 图像分类 | ResNet152 | `samples/vision/resnet152` | S100 / S600 | [详情](./samples/vision/resnet152) |
+| 图像分类 | MobileNetV1 | `samples/vision/mobilenetv1` | S100 | [详情](./samples/vision/mobilenetv1) |
+| 图像分类 | MobileNetV2 | `samples/vision/mobilenetv2` | S100 / S600 | [详情](./samples/vision/mobilenetv2) |
+| 图像分类 | MobileNetV3 | `samples/vision/mobilenetv3` | S100 | [详情](./samples/vision/mobilenetv3) |
+| 图像分类 | MobileNetV4 | `samples/vision/mobilenetv4` | S100 | [详情](./samples/vision/mobilenetv4) |
+| 图像分类 | EfficientNet-Lite | `samples/vision/efficientnet` | S100 | [详情](./samples/vision/efficientnet) |
+| 图像分类 | ViT | `samples/vision/vit` | S100 | [详情](./samples/vision/vit) |
+| 图像分类 | 3D ResNet（视频动作分类） | `samples/vision/3dresnet` | S100 | [详情](./samples/vision/3dresnet) |
+| 语义分割 | UnetMobileNet | `samples/vision/unetmobilenet` | S100 / S600 | [详情](./samples/vision/unetmobilenet) |
+| 单目深度估计 | Depth Anything V2 | `samples/vision/depth_anything_v2` | S100 | [详情](./samples/vision/depth_anything_v2) |
+| 视觉编码器 | SigLIP | `samples/vision/siglip` | S100 / S100P | [详情](./samples/vision/siglip) |
+| 点云分割 | PointNet | `samples/vision/pointnet` | S100 | [详情](./samples/vision/pointnet) |
+| 车道线检测 | LaneNet | `samples/vision/lanenet` | S100 | [详情](./samples/vision/lanenet) |
+| 文字识别 | PaddleOCR | `samples/vision/paddle_ocr` | S100 | [详情](./samples/vision/paddle_ocr) |
+| 语音识别 | ASR（Wav2Vec2） | `samples/speech/asr` | S100 / S600 | [详情](./samples/speech/asr) |
+| 关键词唤醒 | KWS（MDTC） | `samples/speech/kws` | S100 | [详情](./samples/speech/kws) |
+| 具身智能 / 机器人策略 | ACT（Action Chunking Transformer） | `samples/vla/act` | S100 / S600 | [详情](https://github.com/D-Robotics/rdk_LeRobot_tools) |
 
 ---
 
-## Documentation & Resources
+## 文档与资源
 
-- **Model Docs**: Each model's top-level `README.md` provides an overview, run guide, and interface description.
-- **Source Reference**: For code-level interface details, see **[Source Documentation](./docs/source_reference/README.md)**.
-- **Guidelines**: To contribute or develop, please read the **[Model Zoo Repository Guidelines](./docs/Model_Zoo_Repository_Guidelines.md)**.
-- **BPU Python API**: See **[Python API User Guide](./docs/Python_API_User_Guide.md)** for `hbm_runtime` usage.
-- **UCP Interface**: See **[UCP User Guide](./docs/UCP_User_Guide.md)** for `libdnn` / `libucp` interface details.
-- **Toolchain Manual**: [RDK S Series OE Toolchain](https://developer.d-robotics.cc/rdk_s_doc/Advanced_development/toolchain_development/overview)
-- **Developer Forum**: [D-Robotics Developer Community](https://developer.d-robotics.cc/)
+- **模型文档**：每个模型的顶层 `README.md` 提供整体介绍与运行指引。
+- **源码参考**：代码层面的接口信息，请参阅 **[源码文档说明](./docs/source_reference/README.md)**。
+- **仓库规范**：贡献或开发前，请仔细阅读 **[Model Zoo 仓库规范](./docs/Model_Zoo_Repository_Guidelines.md)**。
+- **BPU Python API**：`hbm_runtime` 使用方式，请参阅 **[Python API 用户手册](./docs/Python_API_User_Guide.md)**。
+- **UCP 接口**：`libdnn` / `libucp` 接口说明，请参阅 **[UCP 用户手册](./docs/UCP_User_Guide.md)**。
+- **工具链手册**：[RDK S 系列 OE 工具链文档](https://developer.d-robotics.cc/rdk_s_doc/Advanced_development/toolchain_development/overview)
+- **开发者社区**：[D-Robotics 开发者社区](https://developer.d-robotics.cc/)
 
 ---
 
-## FAQ
+## 常见问题
 
 <details>
-<summary><b>1. Model accuracy doesn't meet expectations?</b></summary>
+<summary><b>1. 模型精度不符合预期？</b></summary>
 <br>
 
-- Ensure OpenExplorer Docker and board-side `hbm_runtime` versions are up-to-date.
-- Check if model export followed the operator replacement steps described in the model's `conversion/README.md`.
-- Verify cosine similarity of each output node is >= 0.999 (minimum 0.99) during quantization validation.
-- For Transformer-based models (e.g., ViT, Depth Anything V2, SigLIP), int16 quantization is recommended over int8.
+- 确认 OpenExplorer Docker 与板端 `hbm_runtime` 版本为最新。
+- 检查模型导出是否按照对应 `conversion/README.md` 中的算子替换步骤操作。
+- 确认量化验证阶段各输出节点余弦相似度 >= 0.999（最低 0.99）。
+- 对于含 Transformer 结构的模型（如 ViT、Depth Anything V2、SigLIP），建议使用 int16 量化代替 int8。
 </details>
 
 <details>
-<summary><b>2. Inference speed doesn't meet expectations?</b></summary>
+<summary><b>2. 推理速度不符合预期？</b></summary>
 <br>
 
-- Python API performance is lower than C/C++. For maximum performance, use the C/C++ runtime.
-- Benchmark data (pure forward) excludes pre/post-processing. Models with **NV12** input usually achieve peak BPU throughput.
-- Ensure CPU/BPU frequency is locked to maximum performance mode:
+- Python API 性能低于 C/C++，追求极致性能请使用 C/C++ 运行时。
+- 性能 Benchmark 数据（纯前向）不含前后处理。**NV12** 输入模型通常能达到最高 BPU 吞吐量。
+- 确保 CPU/BPU 频率已锁定为最高性能模式：
 
 ```bash
 sudo bash -c "echo performance > /sys/devices/system/cpu/cpufreq/policy0/scaling_governor"
@@ -193,44 +193,44 @@ sudo bash -c "echo performance > /sys/devices/system/bpu/bpu0/devfreq/28108000.b
 </details>
 
 <details>
-<summary><b>3. How to fix quantization precision loss?</b></summary>
+<summary><b>3. 如何解决量化精度损失？</b></summary>
 <br>
 
-- Refer to the PTQ accuracy debugging section in the OE toolchain documentation.
-- If INT8 loss is severe (e.g., Softmax-heavy Transformer models), switch to INT16 quantization via `set_all_nodes_int16` in the YAML config.
-- For severe cases, consider Mixed Precision or QAT (Quantization-Aware Training).
+- 参考 OE 工具链文档中的 PTQ 精度调优章节。
+- 若 INT8 损失较大（如含大量 Softmax 的 Transformer 模型），可在 YAML 配置中通过 `set_all_nodes_int16` 切换 INT16 量化。
+- 严重情况下可考虑混合精度或 QAT（量化感知训练）。
 </details>
 
 <details>
-<summary><b>4. Does the model use CPU during inference?</b></summary>
+<summary><b>4. 推理时模型会用 CPU 吗？</b></summary>
 <br>
 
-Yes. Non-quantizable or BPU-unsupported operators fall back to CPU. Even for pure BPU models, input/output quantization/dequantization nodes are executed by the CPU. Use `hrt_model_exec model_info` to inspect operator placement.
+会。不可量化或 BPU 不支持的算子会 fallback 到 CPU。即使是纯 BPU 模型，输入/输出的量化/反量化节点也由 CPU 执行。可通过 `hrt_model_exec model_info` 查看算子分配情况。
 </details>
 
 <details>
-<summary><b>5. How to check which BPU platform my board uses?</b></summary>
+<summary><b>5. 如何确认我的板卡使用的 BPU 平台？</b></summary>
 <br>
 
 ```bash
 cat /sys/class/boardinfo/soc_name
 ```
 
-- `s100` → RDK S100, BPU is Nash-e (80 TOPS @ int8)
-- `s100p` → RDK S100P, BPU is Nash-m (128 TOPS @ int8)
-- `s600` → RDK S600, BPU is Nash-p
+- `s100` → RDK S100，BPU 为 Nash-e（80 TOPS @ int8）
+- `s100p` → RDK S100P，BPU 为 Nash-m（128 TOPS @ int8）
+- `s600` → RDK S600，BPU 为 Nash-p
 </details>
 
 ---
 
-## Community & Contribution
+## 社区与贡献
 
-### Star History
+### Star 历史
 
 [![Star History Chart](https://api.star-history.com/svg?repos=D-Robotics/rdk_model_zoo&type=Date)](https://star-history.com/#D-Robotics/rdk_model_zoo&Date)
 
-We warmly welcome contributions! Please raise an issue on [GitHub Issues](https://github.com/D-Robotics/rdk_model_zoo/issues) or discuss on the [Developer Community](https://developer.d-robotics.cc/).
+欢迎贡献！请在 [GitHub Issues](https://github.com/D-Robotics/rdk_model_zoo/issues) 提交问题，或在[开发者社区](https://developer.d-robotics.cc/)参与讨论。
 
-## License
+## 许可证
 
-This project is licensed under the [Apache License 2.0](./LICENSE) agreement.
+本项目遵循 [Apache License 2.0](./LICENSE) 协议。
