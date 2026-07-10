@@ -1,4 +1,22 @@
+# rdk_model_zoo
+
 项目基于https://github.com/D-Robotics/rdk_model_zoo/tree/rdk_s 分支`rdk_s`
+
+```bash
+# 添加上游仓库(官方仓库)
+git remote add upstream  https://github.com/D-Robotics/rdk_model_zoo.git
+# 获取上游仓库信息
+git fetch upstream
+# 拉取S100分支
+git pull upstream rdk_s:upstream_rdk_s
+```
+
+## 分支说明
+
+- `master`：默认分支
+- `upstream_rdk_s`：同步RDK官方S100的分支，不作修改
+
+## 变动
 
 新增内容为：  
 - 实例分割视频流处理  
@@ -7,6 +25,8 @@
 - 实时语音识别  
 
 
+
+# 简介(以下为地平线官方内容，未作修改)
 
 <div align="center">
   <img src="docs/assets/model_zoo_logo.jpg" width="60%" alt="RDK Model Zoo Logo"/>
